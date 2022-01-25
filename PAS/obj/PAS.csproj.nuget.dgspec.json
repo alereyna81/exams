@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Noemi Reyna\\source\\repos\\PAS\\PAS.csproj": {}
+    "C:\\Users\\Noemi Reyna\\Documents\\GitHub\\exams\\PAS\\PAS.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Noemi Reyna\\source\\repos\\PAS\\PAS.csproj": {
+    "C:\\Users\\Noemi Reyna\\Documents\\GitHub\\exams\\PAS\\PAS.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Noemi Reyna\\source\\repos\\PAS\\PAS.csproj",
+        "projectUniqueName": "C:\\Users\\Noemi Reyna\\Documents\\GitHub\\exams\\PAS\\PAS.csproj",
         "projectName": "PAS",
-        "projectPath": "C:\\Users\\Noemi Reyna\\source\\repos\\PAS\\PAS.csproj",
+        "projectPath": "C:\\Users\\Noemi Reyna\\Documents\\GitHub\\exams\\PAS\\PAS.csproj",
         "packagesPath": "C:\\Users\\Noemi Reyna\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Noemi Reyna\\source\\repos\\PAS\\obj\\",
+        "outputPath": "C:\\Users\\Noemi Reyna\\Documents\\GitHub\\exams\\PAS\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Noemi Reyna\\AppData\\Roaming\\NuGet\\NuGet.Config",

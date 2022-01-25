@@ -23,79 +23,82 @@
             Portal de Gestión de Actividades
         </h3>
 
-        <h5>Nueva Actividad</h5>
-        <form action="javascript:void(0);" method="POST" onsubmit="addItem()">
-            <input type="text" id="add-title" placeholder="Título">
-            <select id="property-dropdown" name="property"></select>
-            Fecha y hora:
-            <input type="text" id="activitydate" />
-            <input type="submit" value="Guardar" class="btn btn-info">
-        </form>
-
-
-        <hr />
-        <h5>Lista Actividades</h5>
-        <table class="table table-striped" style="font-size: smaller;">
-            <thead class="thead-dark">
-                <tr>
-                    <th>ID</th>
-                    <th>Schedule</th>
-                    <th>Title</th>
-                    <th>Created_at</th>
-                    <th>Status</th>
-                    <th>Condition</th>
-                    <th>Property</th>
-                    <th>Survey</th>
-                    <th>¿Re -Agendar?</th>
-                    <th>¿Cancelar?</th>
-                </tr>
-            </thead>
-            <tbody id="activities"></tbody>
-        </table>
-
-        <hr />
-        <div id="editForm">
-            <h5>Re-Agendar Actividad</h5>
-            <form action="javascript:void(0);" onsubmit="updateItem()">
-                <input type="hidden" id="id">
-                <input type="text" id="title" readonly>
-                <input type="text" id="property_id" readonly>
-                Fecha y hora:
-                <input type="text" id="updateactivitydate">
-                <input type="submit" value="Guardar cambios" class="btn btn-info">
-                <a onclick="closeEdition()" aria-label="Cerrar">&#10006;</a>
+        <div class="newform">
+            <h5 class="module">Nueva Actividad</h5>
+            <form action="javascript:void(0);" method="POST" onsubmit="addItem()" class="module">
+                Título: <input type="text" id="add-title" placeholder="Insert a title">
+                Propiedad: <select id="property-dropdown" name="property"></select>
+                Fecha/Hora: <input type="text" id="activitydate" />
+                <input type="submit" value="Guardar" class="btn btn-info fontsize">
             </form>
         </div>
-        <script src="js/activity.js" asp-append-version="true"></script>
-        <script src="js/property.js"></script>
-        <script src="js/home.js"></script>
-        <script src="js/site.js"></script>
-        <script type="text/javascript">
-            getItems();
-            jQuery(function ($) {
-                var today = new Date();
-                $("#updateactivitydate").datetimepicker({
-                    minDate: today,
-                    dateFormat: "yy-mm-dd"
-                });
-                $("#activitydate").datetimepicker({
-                    minDate: today,
-                    dateFormat: "yy-mm-dd"
-                });
-            });
-        </script>
-    </div>
 
-    <!--<script src="variables.js"></script>
+        <hr />
+        <div class="newform">
+            <h5 class="module">Lista Actividades</h5>
+            <table class="table table-striped module fontsize" >
+                <thead class="thead-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Schedule</th>
+                        <th>Title</th>
+                        <th>Created_at</th>
+                        <th>Status</th>
+                        <th>Condition</th>
+                        <th>Property</th>
+                        <th>Survey</th>
+                        <th>¿Reagendar?</th>
+                        <th>¿Cancelar?</th>
+                    </tr>
+                </thead>
+                <tbody id="activities"></tbody>
+            </table>
+            </div>
+            <hr />
+
+            <div id="editForm" class="newform">
+                <h5 class="module">Reagendar Actividad</h5>
+                <form action="javascript:void(0);" onsubmit="updateItem()" class="module">
+                    <input type="hidden" id="id">
+                    <input type="text" class="editmode" id="title" readonly>
+                    <input type="text" class="editmode" id="property_id" readonly>
+                    Fecha/hora:
+                    <input type="text" id="updateactivitydate">
+                    <input type="submit" value="Guardar cambios" class="btn btn-info fontsize">
+                    <a onclick="closeEdition()" aria-label="Cerrar">&#10006;</a>
+                </form>
+            </div>
+            <script src="js/activity.js" asp-append-version="true"></script>
+            <script src="js/property.js"></script>
+            <script src="js/home.js"></script>
+            <script src="js/site.js"></script>
+            <script type="text/javascript">
+                getItems();
+                jQuery(function ($) {
+                    var today = new Date();
+                    $("#updateactivitydate").datetimepicker({
+                        minDate: today,
+                        dateFormat: "yy-mm-dd"
+                    });
+                    $("#activitydate").datetimepicker({
+                        minDate: today,
+                        dateFormat: "yy-mm-dd"
+                    });
+                });
+            </script>
+        </div>
+
+        <!--<script src="variables.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
     <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>-->
-    <!--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script>-->
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" crossorigin="anonymous"></script>
-    <script src="js/bootstrap.js"></script>
-    <!--<script src="js/app.js"></script>-->
+        <!--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script>-->
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <link href="css/site.css" rel="stylesheet" />
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" crossorigin="anonymous"></script>
+        <script src="js/bootstrap.js"></script>
+        <!--<script src="js/app.js"></script>-->
 </body>
 </html>

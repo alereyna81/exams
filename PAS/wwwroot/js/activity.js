@@ -12,15 +12,22 @@ let activities = [];
 
 function addItem() {
     const addNameTextbox = document.getElementById('add-title');
+    const activitydateTextbox = document.getElementById('activitydate');
+    alert(activitydateTextbox.value.trim());
+    var _date = activitydateTextbox.value.trim().substring(0, 10);
+    var _time = activitydateTextbox.value.trim().substring(11, 5); 
 
     const item = {      
         id: 0,
         property_id: parseInt('1', 10),
-        schedule: new Date(),
+        schedule: _date, // + 'T' + _time, //new Date(),
         title: addNameTextbox.value.trim(),
         created_at: new Date(),
         updated_at: new Date(),
-        status: "Active"
+        status: "Active",
+        property: "",
+        condition: "",
+        survey:""
     };
 
     fetch(uri_act, {
@@ -35,6 +42,7 @@ function addItem() {
         .then(() => {
             getItems();
             addNameTextbox.value = '';
+            activitydateTextbox.value = '';
         })
         .catch(error => console.error('Error al añadir la actividad.', error));
 }
@@ -51,7 +59,7 @@ function displayEditForm(id) {
     const item = activities.find(item => item.id === id);
 
     document.getElementById('title').value = item.title;
-    document.getElementById('property_id').value = item.property_id;
+    document.getElementById('property_id').value = item.property;
     document.getElementById('id').value = item.id;
     document.getElementById('updateactivitydate').value = item.schedule.substring(0,10);
     document.getElementById('editForm').style.display = 'block';
@@ -98,7 +106,6 @@ function _displayActivities(data) {
     tBody.innerHTML = '';
 
     const button = document.createElement('button');
-    //const link = document.createElement('a');
 
     data.forEach(item => {
         let editButton = button.cloneNode(false);
@@ -165,4 +172,5 @@ function _displayActivities(data) {
     });
 
     activities = data;
+    closeEdition();
 }

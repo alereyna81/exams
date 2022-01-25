@@ -91,7 +91,7 @@ namespace PAS.Controllers
                 using (NpgsqlCommand command = new NpgsqlCommand(query, conn))
                 {
                     command.Parameters.AddWithValue("@property_id", act.property_id);
-                    command.Parameters.AddWithValue("@schedule", DateTime.Now);
+                    command.Parameters.AddWithValue("@schedule", act.schedule);
                     command.Parameters.AddWithValue("@title", act.title);
                     command.Parameters.AddWithValue("@created_at", DateTime.Now);
                     command.Parameters.AddWithValue("@updated_at", DateTime.Now);

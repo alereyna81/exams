@@ -1,0 +1,30 @@
+﻿body {
+}
+
+.newform {
+    border: 1px solid;
+    border-radius: 5px;
+    border-color: lightgrey;
+}
+
+.module {
+    padding: 5px 5px 10px 10px;
+}
+
+h5 {
+    color: #17a2b8;
+}
+
+.fontsize{
+    font-size:smaller;
+}
+
+select {
+    color: gray;
+}
+
+.editmode {
+    width: 300px;
+    color: darkgray;
+}
+
