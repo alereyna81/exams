@@ -12,8 +12,5 @@
         public String condition { get; set; }
         public String property { get; set; }
         public String survey { get; set; }
-
-        //public List<Property> Properties { get; set; }
-        //public Survey Survey { get; set; }
     }
 }

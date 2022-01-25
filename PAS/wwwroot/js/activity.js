@@ -1,50 +1,55 @@
-﻿
-//const uri = 'api/Activity';
-let activities = [];
-
-
-//function getItems() {
-//    fetch(uri)
-//        .then(response => response.json())
-//        .then(data => _displayItems(data))
-//        .catch(error => console.error('Error al obtener lista de Actividades.', error));
-//}
+﻿let activities = [];
 
 function addItem() {
-    const addNameTextbox = document.getElementById('add-title');
+    const addNameTextbox = document.getElementById('activitytitle');
     const activitydateTextbox = document.getElementById('activitydate');
-    alert(activitydateTextbox.value.trim());
+    const propertyselect = document.getElementById("property-dropdown");
+    var _propid = propertyselect.value;
+    var existe = 0;
+
     var _date = activitydateTextbox.value.trim().substring(0, 10);
-    var _time = activitydateTextbox.value.trim().substring(11, 5); 
+    var _time = activitydateTextbox.value.substring(11) + ':00';
+    //No se pueden crear actividades en la misma fecha y hora(para la misma propiedad),
+    //tomando en cuenta que cada actividad debe durar máximo una hora.
+    activities.forEach(function (act) {
+        if (act.schedule.substring(0, 10) == _date && act.property_id == _propid) { //Actividad con la misma fecha y propiedad
+            existe = 1;
+        }
+    });
 
-    const item = {      
-        id: 0,
-        property_id: parseInt('1', 10),
-        schedule: _date, // + 'T' + _time, //new Date(),
-        title: addNameTextbox.value.trim(),
-        created_at: new Date(),
-        updated_at: new Date(),
-        status: "Active",
-        property: "",
-        condition: "",
-        survey:""
-    };
+    if (existe == 0) {
+        const item = {
+            id: 0,
+            property_id: _propid, 
+            schedule: _date + 'T' + _time, 
+            title: addNameTextbox.value.trim(),
+            created_at: new Date(),
+            updated_at: new Date(),
+            status: "Active",
+            property: "",
+            condition: "",
+            survey: ""
+        };
 
-    fetch(uri_act, {
-        method: 'POST',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(item)
-    })
-        .then(response => response.json())
-        .then(() => {
-            getItems();
-            addNameTextbox.value = '';
-            activitydateTextbox.value = '';
+        fetch(uri_act, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(item)
         })
-        .catch(error => console.error('Error al añadir la actividad.', error));
+            .then(response => response.json())
+            .then(() => {
+                getItems();
+                addNameTextbox.value = '';
+                activitydateTextbox.value = '';
+            })
+            .catch(error => console.error('Error al añadir la actividad.', error));
+    }else {
+        alert('Ya existe una actividad con esta propiedad');
+    }
+
 }
 
 function deleteItem(id) { //Sólo cambiar el estatus a 'Inactivo', pero usaré DELETE
